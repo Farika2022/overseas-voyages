@@ -1,11 +1,11 @@
-/* Add/modify ONLY these lines to  existing CSS */
 
 .header {
   position: relative;
-  width: 1480px;
-  max-width: 1800px;
-  height: 620px;              /* 👈 HERO HEIGHT */
-  margin: 0 ;       /* space below navbar */
+  width: 100vw;              /* Use viewport width instead of fixed pixels */
+  max-width: 1800px;        /* Maximum width for very large screens */
+  min-width: 300px;         /* Minimum width for very small screens */
+  height: 650px;                 
+  margin: 10px  0 ;       /* space below navbar */
   border: 4px solid #49557e;
   overflow: hidden;
   border-radius: 12px;

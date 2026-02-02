@@ -2,15 +2,12 @@ import React, { useState } from 'react';
 import './Headerslide1.css';
 import BgVideo from '../../assets/voyages.mp4'
 
-interface HeaderProps {
-  search: string;
-  setSearch: React.Dispatch<React.SetStateAction<string>>;
-}
-const Headerslide1: React.FC<HeaderProps> = () => {
+
+const Headerslide1: React.FC = () => {
  
   return (
    
-          <section className= 'header'>
+          <section id= "home1"className= 'header'>
      
       {/*<img className="header-logo" src={logotext} alt="" />*/}
       <video src={BgVideo} autoPlay muted loop className="video-bg" />
