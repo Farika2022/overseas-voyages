@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Landing.css'
 import Header from '../../components/Header/Headerslide1'
 import AboutUs from '../../components/AboutUs/AboutUs'
+import Work from '../../components/Work/Work'
 const Landing = () => {
   const [search, setSearch] = useState('') // search term state
 
@@ -9,6 +10,7 @@ const Landing = () => {
      <div className="min-h-screen pt-2 ">
       <Header  />
       <AboutUs />
+      <Work/>
     </div>
   )
 }

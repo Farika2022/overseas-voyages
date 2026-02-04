@@ -1,22 +1,16 @@
-import React, { useRef, useState, useLayoutEffect } from "react";
+import React, { useRef, useState,  useLayoutEffect } from "react";
 import { motion } from "framer-motion";
 import { Reveal } from "../../Reveal.tsx";
-import "react-image-gallery/styles/css/image-gallery.css";
-import ImageGallery from "react-image-gallery";
-import Modal from "react-modal";
-import { Link } from "react-router-dom";
 
-     /*Included images */
+/*Included images */
 import test1 from "../../assets/test1.jpg"
 import test2 from "../../assets/test2.jpeg"
 import test from "../../assets/voyages-wallpaper.jpg"
 
-
-
-const AboutUs: React.FC = () => {
+const Work: React.FC = () => {
   return (
     <section
-      id="aboutus"
+      id="work"
       className="relative bg-violet-blush py-2 overflow-hidden pt-10 md:pt-14"
     >
       <div className="section">
@@ -29,7 +23,7 @@ const AboutUs: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              WHO WE ARE
+              WHAT WE DO
             </motion.h2>
           </Reveal>
 
@@ -40,9 +34,8 @@ const AboutUs: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           />
-
-          {/* Section*/}
         </div>
+        
         <div className="max-w-2xl mx-auto mb-12">
           <Reveal direction="left" delay={0.2}>
             <motion.blockquote
@@ -52,71 +45,100 @@ const AboutUs: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              “Our happiest moments as tourists always seem to come when we stumble upon one thing while in pursuit of something else”  -{" "}
-              <strong>Lawrence Block</strong>
+              "We specialize in sourcing the finest travel suppliers and curating exceptional
+experiences worldwide."
             </motion.blockquote>
-
-           
+            <div className="text-4xl md:text-5xl font-serif text-center mb-4 text-neutral-900">
+              <strong>Our services include</strong>
+            </div>
           </Reveal>
         </div>
 
-  <div className="grid grid-cols-2 lg:grid-cols-3 gap-10 mb-30">
-  <Reveal direction="right" delay={0.4}>
-    <PhilosophyCard
-      title="Our Story"
-      description="Overseas Voyages is an innovative company dedicated to
-      promoting new and emerging destinations while championing sustainable
-      travel."
-      delay={0}
-      images={[{ original: test, thumbnail: test }]}
-      link="https://blindbox.com.mx/"  /*UPDATE THE CORRECT LINK*/  
-    />
-  </Reveal>
-  
-  <Reveal direction="right" delay={0.4}>
-    <PhilosophyCard
-      title="Our Mission"
-      description="Connecting travelers with responsible tourism experiences worldwide."
-      delay={0}
-      images={[{ original: test1, thumbnail: test1 }]}
-      link="https://blindbox.com.mx/"  /*UPDATE THE CORRECT LINK*/  
-    />
-  </Reveal>
-  
-  <Reveal direction="right" delay={0.4}>
-    <PhilosophyCard
-      title="Our Vision"
-      description="To be the leading hub for curated travel experiences, connecting
-      travelers with trusted suppliers and unforgettable journeys."
-      delay={0.1}
-      images={[{ original: test2, thumbnail: test2 }]}
-      link="https://blindbox.com.mx/"  /*UPDATE THE CORRECT LINK*/  
-    />
-  </Reveal>
-</div>
-        <div className="relative w-1/2 h-[120px]"></div>
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 h-5 pointer-events-none"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          <svg
-            className="absolute bottom-0 left-1 w-full h-auto"
-            viewBox="4 10 750 174"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill="#f02727fd"
-              d="M0,64L48,74.7C96,85,192,107,288,112C384,117,480,107,576,128C672,149,768,203,864,202.7C960,203,1056,149,1152,144C1248,139,1344,181,1392,202.7L1440,224V320H1392C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320H0Z"
+        <div className="grid grid-cols-2 lg:grid-cols-2 gap-16 mb-30">
+          <Reveal direction="left" delay={0.4}>
+            <PhilosophyCard
+              title="Eco-Tourism"
+              description="Sustainable travel experiences that support local communities and the environment."
+              delay={0}
+              images={[{ original: test, thumbnail: test }]}
+              link=""
             />
-          </svg>
-        </motion.div>
+          </Reveal>
+          
+          <Reveal direction="right" delay={0.4}>
+            <PhilosophyCard
+              title={
+    <>
+      MICE{" "}
+      <br></br>
+      <span  className="text-white text-3xl mb-4 transition-all text-neutral-900 duration-300 hover:scale-105 cursor-pointer"
+            style={{ fontFamily: "Sofia, cursive" }}>(Meetings, Incentives, Conferences, and Exhibitions)</span>
+   
+    </>
+            }
+              description="Tailored solutions for corporate events worldwide."
+              delay={0}
+              images={[{ original: test1, thumbnail: test1 }]}
+              link=""
+            />
+          </Reveal>
+          
+          <Reveal direction="left" delay={0.4}>
+            <PhilosophyCard
+              title="Destination Marketing"
+              description="Helping destinations build global visibility. - Hotels & Unique Stays: Exclusive accommodations tailored to every traveler's needs."
+              delay={0.1}
+              images={[{ original: test2, thumbnail: test2 }]}
+              link=""
+            />
+          </Reveal>
+          
+          <Reveal direction="left" delay={0.4}>
+            <PhilosophyCard
+              title="Cruises"
+              description="We sell all the world's leading ocean cruises and river cruises."
+              delay={0.1}
+              images={[{ original: test2, thumbnail: test2 }]}
+              link=""
+            />
+          </Reveal>
+          
+          <Reveal direction="right" delay={0.4}>
+            <PhilosophyCard
+              title="Adventure & Unique Activities"
+              description="Wild activities, theme parks, and unexplored destinations."
+              delay={0.1}
+              images={[{ original: test2, thumbnail: test2 }]}
+              link=""
+            />
+          </Reveal>
+        </div>
+        
+      <div className="relative w-1/2 h-[120px]"></div>
+             <motion.div
+               className="absolute bottom-0 left-0 right-0 h-5 pointer-events-none"
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               transition={{ duration: 1, delay: 0.5 }}
+             >
+               <svg
+                 className="absolute bottom-0 right-1 w-full h-auto scale-x-[-1]"
+                 viewBox="4 10 750 174"
+                 fill="none"
+                 xmlns="http://www.w3.org/2000/svg"
+               >
+                 <path
+                   fill="#f02727fd"
+                   d="M0,64L48,74.7C96,85,192,107,288,112C384,117,480,107,576,128C672,149,768,203,864,202.7C960,203,1056,149,1152,144C1248,139,1344,181,1392,202.7L1440,224V320H1392C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320H0Z"
+                 />
+               </svg>
+             </motion.div>
+           
       </div>
     </section>
   );
 };
+
 const PhilosophyCard: React.FC<{
   title: React.ReactNode;
   description: React.ReactNode;
@@ -150,8 +172,8 @@ const PhilosophyCard: React.FC<{
 
   return (
     <motion.div
-      className="relative flex flex-col h-[450px] text-center p-6 bg-gradient-to-br from-red-accent-600 to-red-accent-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
-      initial={{ opacity: 0, y: 10 }}
+      className="relative flex flex-col w-[500px] h-[550px] text-center p-7 bg-gradient-to-br from-red-accent-600 to-red-accent-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+      initial={{ opacity: 0, y: 4 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
@@ -190,7 +212,7 @@ const PhilosophyCard: React.FC<{
             className="block w-full"
           >
             <h3
-              className="text-white text-5xl font-bold transition-all text-neutral-900 duration-300 hover:scale-105 cursor-pointer"
+              className="text-white text-2xl font-bold transition-all text-neutral-900 duration-300 hover:scale-105 cursor-pointer"
               style={{ fontFamily: "Sofia, cursive" }}
             >
               {title}
@@ -206,7 +228,7 @@ const PhilosophyCard: React.FC<{
         )}
       </div>
 
-      {/* Description Section */}
+      {/* Description Section with proper spacing */}
       <div className="flex-1 min-h-0 flex flex-col">
         <div
           ref={descriptionRef}
@@ -215,9 +237,10 @@ const PhilosophyCard: React.FC<{
           }`}
           style={{ 
             fontFamily: "Sofia, cursive",
-            fontSize: "1.2rem",
+            fontSize: 25,
+            fontWeight:"bold",
             lineHeight: '1.5',
-           
+            marginTop: '8px' // Add margin-top for gap
           }}
         >
           {description}
@@ -243,4 +266,4 @@ const PhilosophyCard: React.FC<{
 };
  
 
-export default AboutUs;
+export default Work;

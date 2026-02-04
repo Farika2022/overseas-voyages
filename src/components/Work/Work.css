@@ -1,0 +1,58 @@
+@import "react-image-gallery/styles/css/image-gallery.css";
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;500;600;700;800&display=swap');
+
+@layer components {
+  .section {
+    @apply py-6 md:py-4 px-2 max-w-7xl mx-auto;
+  }
+  
+  .btn {
+    @apply px-8 py-4  font-semibold transition-all duration-300 inline-block text-center shadow-xl;
+    white-space: nowrap;
+    font-size: 1.1rem;
+  }
+  
+  .btn-primary {
+     @apply relative px-8 py-4 bg-white-accent text-white font-semibold hover:bg-pink-accent  hover:shadow-2xl hover:scale-105  transition-all duration-300 inline-block text-center;
+  clip-path: path('M30 60 Q60 90 90 60 T150 60 Q180 30 150 0 T90 0 Q60 30 30 0 T0 30 Q0 60 30 60 Z');
+
+  }
+  .btn-primary1 {
+     @apply relative px-10 py-4 bg-red-accent text-white font-semibold hover:bg-violet-dark hover:shadow-2xl hover:scale-105  transition-all duration-300 inline-block text-center;
+  clip-path: path('M30 60 Q60 90 90 60 T150 60 Q180 30 150 0 T90 0 Q60 30 30 0 T0 30 Q0 60 30 60 Z');
+
+  }
+  
+  .btn-outline {
+    @apply border-2 border-violet-accent text-violet-accent hover:bg-violet-accent hover:text-white hover:scale-105 transform transition-all shadow-lg;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl border border-neutral-100;
+  }
+  
+  .gradient-bg {
+    background: linear-gradient(135deg, #f3f1f1 0%, #fb6d6da8 50%, #f40b0b 100%);
+    position: relative;
+  }
+  
+  .gradient-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(235, 15, 15, 0.855);
+    pointer-events: none;
+  }
+}
+.image-gallery-thumbnail img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.image-gallery-thumbnail img:hover {
+  transform: scale(5.1);
+}
