@@ -54,7 +54,7 @@ experiences worldwide."
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-2 gap-16 mb-30">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-16 mb-30">
           <Reveal direction="left" delay={0.4}>
             <PhilosophyCard
               title="Eco-Tourism"
@@ -69,14 +69,22 @@ experiences worldwide."
             <PhilosophyCard
               title={
     <>
+      <div  style={{ fontFamily: "Sofia, cursive" ,paddingTop: '12%',marginTop:'10%' }}>
       MICE{" "}
-      <br></br>
-      <span  className="text-white text-3xl mb-4 transition-all text-neutral-900 duration-300 hover:scale-105 cursor-pointer"
-            style={{ fontFamily: "Sofia, cursive" }}>(Meetings, Incentives, Conferences, and Exhibitions)</span>
+      <br></br></div>
+      <span  className="text-white text-2xl mb-4 transition-all text-neutral-900 duration-300 hover:scale-105 cursor-pointer"
+            style={{ fontFamily: "Sofia, cursive"  }}>(Meetings, Incentives, Conferences, and Exhibitions)</span>
    
     </>
             }
-              description="Tailored solutions for corporate events worldwide."
+           
+              description={
+                <>
+                 <div  style={{ fontFamily: "Sofia, cursive" ,marginTop:'20%' }}>
+                Tailored solutions for corporate events worldwide.
+                </div>
+              </>
+              }
               delay={0}
               images={[{ original: test1, thumbnail: test1 }]}
               link=""
@@ -122,7 +130,7 @@ experiences worldwide."
                transition={{ duration: 1, delay: 0.5 }}
              >
                <svg
-                 className="absolute bottom-0 right-1 w-full h-auto scale-x-[-1]"
+                 className="absolute bottom-0 right-1 w-full h-auto "
                  viewBox="4 10 750 174"
                  fill="none"
                  xmlns="http://www.w3.org/2000/svg"
@@ -153,33 +161,33 @@ const PhilosophyCard: React.FC<{
   useLayoutEffect(() => {
     const checkOverflow = () => {
       const descElement = descriptionRef.current;
-      if (descElement) {
-        const lineHeight = 24;
-        const maxVisibleHeight = lineHeight * 5;
+      if (descElement && !showFull) {
+       const containerHeight = descElement.clientHeight;
         const contentHeight = descElement.scrollHeight;
-        setNeedsReadMore(contentHeight > maxVisibleHeight + 2);
+       
+        const maxHeight = 8 * 24; 
+        setNeedsReadMore(contentHeight > maxHeight +5);
       }
     };
-
-    const timeoutId = setTimeout(checkOverflow, 100);
+    checkOverflow();
+    
     window.addEventListener('resize', checkOverflow);
     
     return () => {
-      clearTimeout(timeoutId);
       window.removeEventListener('resize', checkOverflow);
     };
   }, [description, showFull]);
 
   return (
     <motion.div
-      className="relative flex flex-col w-[500px] h-[550px] text-center p-7 bg-gradient-to-br from-red-accent-600 to-red-accent-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
-      initial={{ opacity: 0, y: 4 }}
+      className="relative flex flex-col w-[400px] h-[500px] text-center p-6 bg-gradient-to-br from-red-accent-600 to-red-accent-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
     >
       {/* Image Section */}
-      <div className="h-48 mb-6 flex-shrink-0"> {/* Increased margin-bottom */}
+      <div className="h-[60%] max-h-48 mb-4 flex-shrink-0"> 
         {link ? (
           <a
             href={link}
@@ -190,20 +198,20 @@ const PhilosophyCard: React.FC<{
             <img
               src={images[0]?.thumbnail || ""}
               alt="Preview"
-              className="rounded-md shadow-md w-full h-full object-cover hover:opacity-90 transition-opacity duration-200 cursor-pointer"
-            />
+              className="rounded-md shadow-md w-full h-full object-cover hover:opacity-90 transition-all duration-200 "
+              />
           </a>
         ) : (
           <img
             src={images[0]?.thumbnail || ""}
             alt="Preview"
-            className="rounded-md shadow-md w-full h-full object-cover hover:opacity-90 transition-opacity duration-200"
+            className="rounded-md shadow-md w-full h-full object-cover hover:opacity-90 transition-opacity duration-200 cursor-pointer hover:shadow-[inset_20px_0_20px_rgba(140,49,49,0.10)]"
           />
         )}
       </div>
 
-      {/* Title Section - Fixed height with proper spacing */}
-      <div className="mb-6 flex-shrink-0 min-h-[5rem]"> {/* Added min-height and margin-bottom */}
+      {/* Title Section */}
+      <div className="h-[10%] min-h-[80px] mb-3 flex items-center justify-center"> {/* Added min-height and margin-bottom */}
         {link ? (
           <a
             href={link}
@@ -220,7 +228,7 @@ const PhilosophyCard: React.FC<{
           </a>
         ) : (
           <h3
-            className="text-white text-5xl font-bold transition-all text-neutral-900 duration-300 hover:scale-105"
+            className="text-white text-4xl font-bold transition-all text-neutral-900 duration-300 hover:scale-105"
             style={{ fontFamily: "Sofia, cursive" }}
           >
             {title}
@@ -240,7 +248,7 @@ const PhilosophyCard: React.FC<{
             fontSize: 25,
             fontWeight:"bold",
             lineHeight: '1.5',
-            marginTop: '8px' // Add margin-top for gap
+            marginTop: '1px' // Add margin-top for gap
           }}
         >
           {description}
