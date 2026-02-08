@@ -32,7 +32,7 @@ const Footer = () => {
             <a href="#home" className="flex items-center gap-2 mb-6">
               <div className="p-2 rounded-full ">
                <img 
-              src={logo1}className="w-25 h-20 " />
+              src={logo1}className="w-30 h-20 " />
               </div>
              
             </a>

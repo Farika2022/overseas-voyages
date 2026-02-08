@@ -8,18 +8,49 @@ const ContactSection = () => {
     subject: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      if (response.ok) {
+        setSubmitStatus('success');
+        // Clear form after successful submission
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
+        
+        // Auto-hide success message after 5 seconds
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Social media links with actual IDs
   const socialLinks = [
     { 
       Icon: Facebook, 
@@ -41,7 +72,6 @@ const ContactSection = () => {
   return (
     <section id="contact" className="section-padding bg-background">
       <div className="container mx-auto px-4">
-        {/* Section Header */}
         <div className="text-center mb-16">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-4 block">
             Contact Us
@@ -68,7 +98,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Office Location</h4>
-                    <p className="opacity-90"></p> {/* Address*/ }
+                    <p className="opacity-90"></p>
                   </div>
                 </div>
 
@@ -93,7 +123,6 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              {/* Social Links - UPDATED */}
               <div className="mt-10 pt-8 border-t border-primary-foreground/20">
                 <h4 className="font-semibold mb-4">Follow Us</h4>
                 <div className="flex gap-4">
@@ -113,7 +142,6 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Partnership CTA */}
             <div className="bg-secondary rounded-3xl p-8">
               <h3 className="font-display text-xl font-bold text-foreground mb-3">
                 Partnership Opportunities
@@ -135,6 +163,19 @@ const ContactSection = () => {
             <h3 className="font-display text-2xl font-bold text-foreground mb-8">Send Us a Message</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <div className="p-4 rounded-xl bg-green-50 text-green-800 border border-green-200">
+                  ✅ Thank you! Your message has been sent to team@overseasvoyages.com
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="p-4 rounded-xl bg-red-50 text-red-800 border border-red-200">
+                  ❌ Sorry, there was an error. Please email us directly at team@overseasvoyages.com
+                </div>
+              )}
+              
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                   Your Name
@@ -148,6 +189,7 @@ const ContactSection = () => {
                   className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                   placeholder="John Doe"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -164,6 +206,7 @@ const ContactSection = () => {
                   className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                   placeholder="john@example.com"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -178,12 +221,14 @@ const ContactSection = () => {
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                   required
+                  disabled={isSubmitting}
                 >
                   <option value="">Select a subject</option>
-                  <option value="general">General Inquiry</option>
-                  <option value="booking">Booking Request</option>
-                  <option value="partnership">Partnership Opportunity</option>
-                  <option value="support">Support</option>
+                  <option value="General Inquiry">General Inquiry</option>
+                  <option value="Booking Request">Booking Request</option>
+                  <option value="Partnership Opportunity">Partnership Opportunity</option>
+                  <option value="Support">Support</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
 
@@ -200,15 +245,29 @@ const ContactSection = () => {
                   className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none"
                   placeholder="Tell us about your travel dreams..."
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
               <button
                 type="submit"
-                className="btn-hero w-full justify-center"
+                disabled={isSubmitting}
+                className="btn-hero w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message
-                <Send className="w-5 h-5" />
+                {isSubmitting ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <Send className="w-5 h-5" />
+                  </>
+                )}
               </button>
             </form>
           </div>

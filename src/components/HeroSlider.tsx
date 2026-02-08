@@ -6,7 +6,7 @@ import teamCollage from '@/assets/team-collage.jpg';
 interface Slide {
   image: string;
   taglineEn: string;
-  taglineDa: string;
+  /*taglineDa?: string;*/
   subtext: string;
 }
 
@@ -14,25 +14,25 @@ const slides: Slide[] = [
   {
     image: heroLandscape,
     taglineEn: 'We Travel Everywhere to Help You Travel Anywhere',
-    taglineDa: 'Vi Rejser Overalt for at Hjælpe Dig med at Rejse Hvor Som Helst',
+    /*taglineDa: 'Vi Rejser Overalt for at Hjælpe Dig med at Rejse Hvor Som Helst'*/
     subtext: 'Promoting new & emerging destinations while championing sustainable travel. We connect with and source trusted, time-tested suppliers and Destination Management Companies across the globe.',
   },
   {
     image: heroLandscape,
     taglineEn: 'Discover Breathtaking Destinations',
-    taglineDa: 'Oplev Betagende Destinationer',
+    /*taglineDa: 'Oplev Betagende Destinationer',*/
     subtext: 'From pristine beaches to majestic mountains, experience the world\'s most extraordinary landscapes through our curated travel experiences.',
   },
   {
     image: passportStamps,
     taglineEn: 'Your Passport to Adventure',
-    taglineDa: 'Dit Pas til Eventyr',
+    /*taglineDa: 'Dit Pas til Eventyr',*/
     subtext: 'With connections spanning every continent, we open doors to destinations you\'ve only dreamed of. Your next adventure awaits.',
   },
   {
     image: teamCollage,
     taglineEn: 'Global Network, Personal Touch',
-    taglineDa: 'Globalt Netværk, Personlig Service',
+   /* taglineDa: 'Globalt Netværk, Personlig Service',*/
     subtext: 'Our team of dedicated travel experts and trusted partners work tirelessly to create unforgettable journeys tailored just for you.',
   },
 ];
@@ -91,10 +91,10 @@ const HeroSlider = () => {
                 {slide.taglineEn}
               </h1>
               
-              {/* Danish Version */}
+              {/* Danish Version 
               <p className="font-display text-xl md:text-2xl lg:text-3xl mb-8 opacity-80 italic">
                 {slide.taglineDa}
-              </p>
+              </p>*/}
               
               {/* Subtext */}
               <p className="text-lg md:text-xl max-w-2xl mx-auto mb-10 opacity-90 leading-relaxed">
