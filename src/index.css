@@ -1,71 +1,273 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-family: "Sofia", sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
-a {
-  font-weight: 500;
-  color: #ec230c;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #f1f1f3;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 2.2em;
-  line-height: .4;
-}
-
-  .section {
-    @apply py-16 md:py-24 px-6 max-w-7xl mx-auto;
-  }
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #eb110d;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* Core brand colors - Red & White theme */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    
+    /* Primary - Rich Crimson Red */
+    --primary: 0 84% 44%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary - Light warm gray */
+    --secondary: 0 10% 96%;
+    --secondary-foreground: 0 0% 15%;
+    
+    --muted: 0 5% 95%;
+    --muted-foreground: 0 0% 40%;
+    
+    /* Accent - Warm red tint */
+    --accent: 0 75% 95%;
+    --accent-foreground: 0 84% 35%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 0 10% 90%;
+    --input: 0 10% 90%;
+    --ring: 0 84% 44%;
+    
+    --radius: 0.75rem;
+    
+    /* Custom brand colors */
+    --brand-red: 0 84% 44%;
+    --brand-red-dark: 0 84% 35%;
+    --brand-red-light: 0 75% 95%;
+    --brand-cream: 30 50% 98%;
+    --brand-charcoal: 0 0% 15%;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px hsl(0 0% 0% / 0.06);
+    --shadow-md: 0 4px 20px hsl(0 0% 0% / 0.08);
+    --shadow-lg: 0 10px 40px hsl(0 0% 0% / 0.12);
+    --shadow-red: 0 10px 30px hsl(0 84% 44% / 0.25);
+    
+    /* Typography */
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
   }
-  a:hover {
-    color: #e6e6ed;
+
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 84% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 0 60% 20%;
+    --accent-foreground: 0 84% 70%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 84% 50%;
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+@layer base {
+  * {
+    @apply border-border;
   }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  /* Hero Slider Styles */
+  .hero-slide {
+    @apply relative w-full h-screen flex items-center justify-center overflow-hidden;
+  }
+  
+  .hero-overlay {
+    @apply absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60;
+  }
+  
+  .hero-content {
+    @apply relative z-10 text-center px-4 max-w-5xl mx-auto;
+  }
+  
+  /* Section styles */
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+  
+  .section-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight;
+    font-family: var(--font-display);
+  }
+  
+  .section-subtitle {
+    @apply text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto;
+  }
+  
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-500 ease-out hover:shadow-lg hover:-translate-y-2;
+  }
+  
+  /* Button variants */
+  .btn-hero {
+    @apply bg-primary text-primary-foreground px-8 py-4 text-lg font-semibold rounded-full 
+           transition-all duration-300 hover:scale-105 inline-flex items-center gap-2;
+    box-shadow: var(--shadow-red);
+  }
+  
+  .btn-hero:hover {
+    background: hsl(var(--brand-red-dark));
+  }
+  
+  .btn-outline-hero {
+    @apply border-2 px-8 py-4 text-lg font-semibold rounded-full 
+           backdrop-blur-sm transition-all duration-300 inline-flex items-center gap-2;
+  }
+  
+  /* Navigation */
+  .nav-link {
+    @apply relative text-foreground/80 hover:text-primary font-medium transition-colors duration-300;
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+  
+  /* Red accent line */
+  .accent-line {
+    @apply w-20 h-1 bg-primary rounded-full;
+  }
+  
+  /* Interactive map marker */
+  .map-marker {
+    @apply w-4 h-4 bg-primary rounded-full cursor-pointer 
+           animate-pulse hover:scale-150 transition-transform duration-300;
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out forwards;
+  }
+  
+  /* Stagger delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(40px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slideInLeft {
+  from { 
+    opacity: 0; 
+    transform: translateX(-40px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+@keyframes slideInRight {
+  from { 
+    opacity: 0; 
+    transform: translateX(40px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+@keyframes scaleIn {
+  from { 
+    opacity: 0; 
+    transform: scale(0.9); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--brand-red-dark));
 }

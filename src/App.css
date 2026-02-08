@@ -4,20 +4,7 @@
   padding: 2rem;
   text-align: center;
 }
-:root {
-    --red : #e81010;
-    --grey--light: #E2E8F0;
-    --grey--text: #718096;
-   
-    --primary: var(--grey--light);
-    --secondary: var(--grey--text);
-    --brand:var(--red);
-    /*font-family: "Fredoka One", "Poppins", sans-serif;*/
-    
-    text-align: center;
-    color: var(--grey--background);
-    box-sizing: border-box;
-}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -30,7 +17,6 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
-
 
 @keyframes logo-spin {
   from {
