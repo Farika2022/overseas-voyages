@@ -1,4 +1,4 @@
-// server/index.js - COMPLETE WORKING VERSION
+
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
@@ -43,7 +43,7 @@ app.post('/api/contact', async (req, res) => {
       },
     });
     
-    // 2. Email to YOU (business email)
+    // 2. Email to (business email)
     const mailToYou = await transporter.sendMail({
       from: `"Overseas Voyages Contact Form" <${process.env.EMAIL_USER}>`,
       to: 'farikamagjabeen2022@gmail.com', // WHERE YOU WANT TO RECEIVE EMAILS
