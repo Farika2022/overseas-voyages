@@ -11,42 +11,49 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-    
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      
-      if (response.ok) {
-        setSubmitStatus('success');
-        // Clear form after successful submission
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: '',
-        });
-        
-        // Auto-hide success message after 5 seconds
-        setTimeout(() => setSubmitStatus('idle'), 5000);
-      } else {
-        setSubmitStatus('error');
-      }
-    } catch (error) {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  console.log('🔄 Submitting form...');
+  
+  setIsSubmitting(true);
+  setSubmitStatus('idle');
+  
+  try {
+    // Use server URL
+    const response = await fetch('http://localhost:3001/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+    
+    const result = await response.json();
+    console.log('Server response:', result);
+    
+    if (response.ok && result.success) {
+      setSubmitStatus('success');
+      // Clear form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      });
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    } else {
+      setSubmitStatus('error');
+      console.error('Server error:', result.message);
+    }
+  } catch (error) {
+    console.error('Network error:', error);
+    setSubmitStatus('error');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
