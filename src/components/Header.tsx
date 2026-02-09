@@ -28,7 +28,7 @@ const Header = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
           ? 'bg-background/95 backdrop-blur-md shadow-lg py-3'
-          : 'bg-transparent py-6'
+          : 'bg-background/40 backdrop-blur-md shadow-lg py-3 '
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
@@ -44,7 +44,7 @@ const Header = () => {
             }`} />
           </div>
           <span className={`font-display text-xl font-bold transition-colors ${
-            isScrolled ? 'text-foreground' : 'text-primary-foreground'
+            isScrolled ? 'text-foreground' : 'text-primary'
           }`}>
             Overseas Voyages
           </span>
@@ -59,7 +59,7 @@ const Header = () => {
               className={`relative font-medium transition-colors duration-300 ${
                 isScrolled 
                   ? 'text-foreground/80 hover:text-primary' 
-                  : 'text-primary-foreground/90 hover:text-primary-foreground'
+                  : 'text-primary/90 hover:text-primary-foreground'
               } after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:transition-all after:duration-300 hover:after:w-full ${
                 isScrolled ? 'after:bg-primary' : 'after:bg-primary-foreground'
               }`}

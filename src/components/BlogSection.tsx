@@ -2,6 +2,7 @@ import { Calendar, ArrowRight } from 'lucide-react';
 import ecoTourismImg from '@/assets/eco-tourism.jpg';
 import miceEventImg from '@/assets/mice-event.jpg';
 import cruiseImg from '@/assets/cruise.jpg';
+import { Link } from 'react-router-dom';
 const posts = [
   {
     category: 'Travel Trends',
@@ -79,10 +80,10 @@ const BlogSection = () => {
                 <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                   {post.excerpt}
                 </p>
-                <div className="flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all">
-                  Read More
-                  <ArrowRight className="w-4 h-4" />
-                </div>
+               <Link to="/blog" className="flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all">
+                Read More
+                <ArrowRight className="w-4 h-4" />
+              </Link>
               </div>
             </article>
           ))}

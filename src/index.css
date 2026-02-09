@@ -16,6 +16,9 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
     
+    /* Transparent*/
+     --red-transparent: 0 84% 44% / 0.3;
+
     /* Primary - Rich Crimson Red */
     --primary: 0 84% 44%;
     --primary-foreground: 0 0% 100%;
