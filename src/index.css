@@ -5,6 +5,9 @@
 @tailwind utilities;
 
 @layer base {
+* {
+  font-family: 'Verdana', sans-serif !important;
+}
   :root {
     /* Core brand colors - Red & White theme */
     --background: 0 0% 100%;
@@ -57,8 +60,11 @@
     --shadow-red: 0 10px 30px hsl(0 84% 44% / 0.25);
     
     /* Typography */
-    --font-display: 'Playfair Display', serif;
-    --font-body: 'Inter', sans-serif;
+  --font-display: 'Verdana';
+  --font-body: 'Verdana', sans-serif;
+
+    /* --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;*/
   }
 
   .dark {

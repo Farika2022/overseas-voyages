@@ -61,7 +61,7 @@ const handleSubmit = async (e: React.FormEvent) => {
   const socialLinks = [
     { 
       Icon: Facebook, 
-      href: "https://facebook.com/overseasvoyages",
+      href: "",
       label: "Facebook"
     },
     { 
@@ -71,7 +71,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     },
     { 
       Icon: Linkedin, 
-      href: "https://linkedin.com/company/overseasvoyages",
+      href: "https://www.linkedin.com/company/overseas-voyages/",
       label: "LinkedIn"
     }
   ];
@@ -105,7 +105,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Office Location</h4>
-                    <p className="opacity-90"></p>
+                    <p className="opacity-90">Aalborg, Denmark</p>{/*We need to change the address */}
                   </div>
                 </div>
 
@@ -115,7 +115,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Phone</h4>
-                    <p className="opacity-90"></p>
+                    <p className="opacity-90">+4550180692</p>
                   </div>
                 </div>
 
@@ -160,7 +160,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 href="mailto:partnerships@overseasvoyages.com" 
                 className="text-primary font-semibold hover:underline"
               >
-                partnerships@overseasvoyages.com
+               team@overseasvoyages.com
               </a>
             </div>
           </div>

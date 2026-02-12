@@ -104,7 +104,7 @@ Sent from Overseas Voyages contact form
           <p>If you have urgent inquiries, please email us at team@overseasvoyages.com</p>
           
           <p>Best regards,<br>
-          <strong>The Overseas Voyages Team</strong></p>
+          <strong> Overseas Voyages Team</strong></p>
         </div>
       `,
       text: `
