@@ -149,7 +149,7 @@ const DestinationsSection = () => {
                     >
                       <div className="w-2 h-2 bg-primary rounded-full" />
                       <span className="text-foreground font-medium flex-1">{dest}</span>
-                      <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                     {/* <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />*/}
                     </li>
                   ))}
                 </ul>

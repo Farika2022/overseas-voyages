@@ -42,11 +42,11 @@ app.post('/api/contact', async (req, res) => {
         pass: process.env.EMAIL_PASS,  // Your App Password
       },
     });
-    
+    //${process.env.EMAIL_USER}team@overseasvoyages.com
     // 2. Email to (business email)
     const mailToYou = await transporter.sendMail({
-      from: `"Overseas Voyages Contact Form" <${process.env.EMAIL_USER}>`,
-      to: 'farikamagjabeen2022@gmail.com', // WHERE YOU WANT TO RECEIVE EMAILS
+      from: `"Overseas Voyages Contact Form" <team@overseasvoyages.com>`,
+      to: ' fmoham24student@gmail.com', // WHERE YOU WANT TO RECEIVE EMAILS
       replyTo: email, // So you can reply directly to user
       subject: `New Contact: ${subject}`,
       html: `

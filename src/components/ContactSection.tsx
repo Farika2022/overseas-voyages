@@ -105,7 +105,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Office Location</h4>
-                    <p className="opacity-90">Aalborg, Denmark</p>{/*We need to change the address */}
+                    <p className="opacity-90">World-wide</p>{/*We need to change the address */}
                   </div>
                 </div>
 
@@ -115,7 +115,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Phone</h4>
-                    <p className="opacity-90">+4550180692</p>
+                    <p className="opacity-90">+1 (416) 230-3217</p>
                   </div>
                 </div>
 

@@ -1,16 +1,17 @@
 /*import { Leaf, Users, MapPin, Building2, Ship, Mountain } from 'lucide-react';*/
-import ecoTourismImg from '@/assets/eco-tourism.jpg';
-import miceEventImg from '@/assets/mice-event.jpg';
-import cruiseImg from '@/assets/cruise.jpg';
+import miceEventImg from '@/assets/mice-event.jpg'
+import eco from '@/assets/eco.jpg';
+import adventure from '@/assets/sky.jpg';
 import heroLandscape from '@/assets/hero-landscape.jpg';
 import hotel from '@/assets/hotel.jpg';
 import destination from '@/assets/destination.jpg';
+import cruise from '@/assets/cruise.jpg'
 const services = [
   {
     /*icon: Leaf,*/
     title: 'Eco-Tourism',
     description: 'Sustainable travel experiences that support local communities and the environment.',
-    image: ecoTourismImg,
+    image: eco,
   },
   {
     /*icon: Users,*/
@@ -34,13 +35,13 @@ const services = [
     /*icon: Ship,*/
     title: 'Cruises',
     description: 'We sell all the world\'s leading ocean cruises and river cruises.',
-    image: cruiseImg,
+    image: cruise,
   },
   {
     /*icon: Mountain,*/
     title: 'Adventure & Activities',
     description: 'Wild activities, theme parks, and unexplored destinations for the adventurous.',
-    image: heroLandscape,
+    image:adventure,
   },
 ];
 
