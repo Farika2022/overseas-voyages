@@ -61,7 +61,7 @@ const handleSubmit = async (e: React.FormEvent) => {
   const socialLinks = [
     { 
       Icon: Facebook, 
-      href: "",
+      href: "https://www.facebook.com/overseasvoyagesfans",
       label: "Facebook"
     },
     { 
