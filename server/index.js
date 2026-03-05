@@ -34,7 +34,7 @@ app.post('/api/contact', async (req, res) => {
     // ========== EMAIL SENDING CODE ==========
     console.log('📤 Attempting to send email...');
     
-    // 1. Create transporter
+    // Create transporter
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -43,10 +43,10 @@ app.post('/api/contact', async (req, res) => {
       },
     });
     //${process.env.EMAIL_USER}team@overseasvoyages.com
-    // 2. Email to (business email)
+    //  Email to (business email)
     const mailToYou = await transporter.sendMail({
       from: `"Overseas Voyages Contact Form" <team@overseasvoyages.com>`,
-      to: ' fmoham24student@gmail.com', // WHERE YOU WANT TO RECEIVE EMAILS
+      to: 'team@overseasvoyages.com', // WHERE YOU WANT TO RECEIVE EMAILS
       replyTo: email, // So you can reply directly to user
       subject: `New Contact: ${subject}`,
       html: `
@@ -85,7 +85,7 @@ Sent from Overseas Voyages contact form
     
     console.log('✅ Email to you sent:', mailToYou.messageId);
     
-    // 3. Auto-reply to USER
+    // Auto-reply to USER
     const mailToUser = await transporter.sendMail({
       from: `"Overseas Voyages" <${process.env.EMAIL_USER}>`,
       to: email,

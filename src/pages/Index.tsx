@@ -9,6 +9,7 @@ import SustainabilitySection from '@/components/SustainabilitySection';
 import BlogSection from '@/components/BlogSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import PartnersPage from '@/components/Partners';
 
 const Index = () => {
   return (
@@ -24,6 +25,7 @@ const Index = () => {
         <SustainabilitySection />
         {/*<BlogSection />*/}
         <ContactSection />
+       {/* <PartnersPage/>*/}
       </main>
       <Footer />
     </div>
