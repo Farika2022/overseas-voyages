@@ -47,47 +47,46 @@ const Photocollage = () => {
     pic5,
     pic6,
     pic7,
-    
-   // pic9,
-  //  pic10,
-  //  pic12,
-  //  pic13,
-  //  pic14,
-  //  pic15,
-   // pic16,
-   // pic17,
-   // pic18,
-   // pic19,
-   // pic20,
-   // pic21,
-   // pic22,
-   // pic23,
-    //pic24,
-    //pic25,
+   // pic9, // not working
+  //pic10, // not working
+   pic12,
+  // pic13, // size different
+  // pic14,
+   pic15,
+   // pic16, // not working
+   // pic17, // not working
+   // pic18, // not working
+    pic19,
+   // pic20, // not working
+   // pic21, // not working
+   pic22,
+   pic23,
+   //pic24,
+    //pic25, // not working
     //pic26,
-    pic27,
+    //pic27,
     //pic28,
     //pic29,
     //pic30,
-    //pic31,
-    //pic32,
-    //pic33,
-  //  pic34,
-   // pic35,
-    //pic36,
+    //pic31, // not working
+   // pic32,
+    //pic33, // not working
+   //pic34,
+   //pic35,// not working
+    //pic36, // not working
     // Add more imported images here
   ];
 
   return (
    
-       <div className="h-full p-6 md:p-8 border-4 border-white rounded-2xl m-4">
-<div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 md:gap-2 h-full overflow-y-auto">
+       <div className="h-full p-16 md:p-8 ">
+<div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-4 gap-2 md:gap-2 h-full overflow-y-auto">
         {images.map((src, index) => (
-          <div key={index} className="relative overflow-hidden rounded-lg md:rounded-xl shadow-xl group">
+          <div key={index} className="relative overflow-hidden rounded-lg" style={{ paddingBottom: '100%' }}> 
             <img 
               src={src} 
               alt={`Travel photo ${index + 1}`}
-              className="w-full h-full object-cover min-h-[250px] md:min-h-[280px] transform group-hover:scale-110 transition-transform duration-500"
+              className="absolute inset-0 w-full h-full object-cover "
               onError={(e) => {
                 console.error(`Failed to load image: ${src}`);
                 e.currentTarget.style.display = 'none';

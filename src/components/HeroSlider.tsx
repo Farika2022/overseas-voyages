@@ -194,20 +194,20 @@ const HeroSlider = () => {
       aria-label={`Go to slide ${index + 1}`}
     >
       {/* Pause/Play Icon - Only on active slide, hidden by default, shows on hover */}
-      {index === currentSlide && (
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              togglePause();
-            }}
-            className="w-6 h-6 rounded-full bg-primary-foreground/30 backdrop-blur-sm flex items-center justify-center hover:bg-primary-foreground/50 transition-all duration-200 scale-90 group-hover:scale-100"
-            aria-label={isPaused ? "Play slideshow" : "Pause slideshow"}
-          >
-            {isPaused ? <Play size={16} /> : <Pause size={16} />}
-          </button>
-        </div>
-      )}
+     {index === currentSlide && (
+  <div className="absolute bottom-4 right-4 z-10">
+    <button
+      onClick={(e) => {
+        e.stopPropagation();
+        togglePause();
+      }}
+      className="w-12 h-12 md:w-8 md:h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center active:bg-black/70 transition-all duration-200"
+      aria-label={isPaused ? "Play slideshow" : "Pause slideshow"}
+    >
+      {isPaused ? <Play size={20} className="text-white" /> : <Pause size={20} className="text-white" />}
+    </button>
+  </div>
+)}
     </button>
   ))}
 </div>
