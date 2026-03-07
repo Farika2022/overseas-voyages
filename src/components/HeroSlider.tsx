@@ -193,8 +193,10 @@ const HeroSlider = () => {
       }`}
       aria-label={`Go to slide ${index + 1}`}
     >
+      </button>
+  ))}
       {/* Pause/Play Icon - Only on active slide, hidden by default, shows on hover */}
-     {index === currentSlide && (
+    
   <div className="absolute bottom-4 right-4 z-10">
     <button
       onClick={(e) => {
@@ -207,9 +209,8 @@ const HeroSlider = () => {
       {isPaused ? <Play size={20} className="text-white" /> : <Pause size={20} className="text-white" />}
     </button>
   </div>
-)}
-    </button>
-  ))}
+
+   
 </div>
     </section>
   );

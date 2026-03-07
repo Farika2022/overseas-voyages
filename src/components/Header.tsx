@@ -25,11 +25,8 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-background/95 backdrop-blur-md shadow-lg py-3'
-          : 'bg-background/40 backdrop-blur-md shadow-lg py-3 '
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-background/95 backdrop-blur-md shadow-lg py-2
+          `}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
@@ -56,12 +53,9 @@ const Header = () => {
             <a
               key={item.label}
               href={item.href}
-              className={`relative font-medium transition-colors duration-300 ${
-                isScrolled 
-                  ? 'text-foreground/80 hover:text-primary' 
-                  : 'text-primary/90 hover:text-primary-foreground'
+              className={` 'text-primary/90 hover:text-primary-foreground'
               } after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:transition-all after:duration-300 hover:after:w-full ${
-                isScrolled ? 'after:bg-primary' : 'after:bg-primary-foreground'
+                isScrolled ? 'text-foreground' : 'text-primary'
               }`}
             >
               {item.label}
@@ -73,7 +67,7 @@ const Header = () => {
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className={`lg:hidden p-2 rounded-lg transition-colors ${
-            isScrolled ? 'text-foreground' : 'text-primary-foreground'
+            isScrolled ? 'text-foreground' : 'text-primary'
           }`}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
