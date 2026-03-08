@@ -36,53 +36,40 @@ import pic34 from "../assets/team/34.jpg"
 import pic35 from "../assets/team/35.jpg"
 import pic36 from "../assets/team/36.jpg"
 import pic37 from "../assets/team/37.jpg"
+import pic38 from "../assets/team/38.jpeg"
+import pic39 from "../assets/team/39.jpeg"
+import pic40 from "../assets/team/40.jpeg"
+import pic41 from "../assets/team/41.jpeg"
 // Import more images as needed
 
-const Photocollage = () => {
+const Photocollage2 = () => {
   const images = [
-    pic1,
-    pic2,
-    pic3,
-    pic4,
-    pic5,
-    pic6,
-    pic7,
-   // pic9, // not working
-  //pic10, // not working
-   pic12,
-  // pic13, // size different
-  // pic14,
-   pic15,
-   // pic16, // not working
-   // pic17, // not working
-   // pic18, // not working
-    pic19,
-   // pic20, // not working
-   // pic21, // not working
-   pic22,
-   pic23,
-   //pic24,
+  pic24,
     //pic25, // not working
-    //pic26,
-    //pic27,
-    //pic28,
-    //pic29,
-    //pic30,
+    pic26,
+    pic27,
+    pic28,
+    pic29,
+    pic30,
     //pic31, // not working
-   // pic32,
+    pic32,
     //pic33, // not working
-   //pic34,
+   pic34,
    //pic35,// not working
     //pic36, // not working
+    pic38,
+    pic39,
+    pic40,
+    pic41,
     // Add more imported images here
   ];
 
   return (
    
        <div className="h-full p-16 md:p-8 ">
-<div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-4 gap-2 md:gap-2 h-full overflow-y-auto">
+<div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-4 gap-2 md:gap-1 h-full overflow-y-auto">
         {images.map((src, index) => (
-          <div key={index} className="relative overflow-hidden rounded-lg" style={{ paddingBottom: '100%' }}> 
+          <div key={index} className="relative overflow-hidden " style={{ paddingBottom: '100%' }}> 
             <img 
               src={src} 
               alt={`Travel photo ${index + 1}`}
@@ -97,7 +84,7 @@ const Photocollage = () => {
                 `;
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-red/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
         ))}
       </div>
@@ -106,4 +93,4 @@ const Photocollage = () => {
   );
 };
 
-export default Photocollage;
+export default Photocollage2;

@@ -2,7 +2,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, ArrowRight,Pause, Play  } from 'lucide-react';
 import heroLandscape from '@/assets/hero-landscape.jpg';
 import passportStamps from '@/assets/passport-stamps-map.png';
-import Photocollage from './Photocollage';
+import Photocollage1 from './Photocollage1';
+import Photocollage2 from './Photocollage2';
 
 interface Slide {
   image?: string;
@@ -21,10 +22,13 @@ const slides: Slide[] = [
   {
     image: passportStamps,
     taglineEn: "World's Leading Hub for Time Tested Suppliers",
-    subtext: 'Promoting new & emerging destinations while championing sustainable travel. We source and connect with trusted tour operators across the globe .',
+    subtext: 'We source and connect with trusted tour operators across the globe .',
   },
   {
-    customComponent: <Photocollage />,
+    customComponent: <Photocollage1 />,
+  },
+  {
+    customComponent: <Photocollage2 />,
   },
   {
     image: heroLandscape,
@@ -160,7 +164,7 @@ const HeroSlider = () => {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-primary-foreground/20 backdrop-blur-sm text-primary-foreground hover:bg-primary-foreground/30 transition-all duration-300 z-30"
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 p-3 text-primary hover:bg-primary-foreground/30 transition-all duration-300 z-30"
         aria-label="Previous slide"
       >
         <ChevronLeft size={28} />
@@ -168,7 +172,7 @@ const HeroSlider = () => {
       
       <button
         onClick={nextSlide}
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-primary-foreground/20 backdrop-blur-sm text-primary-foreground hover:bg-primary-foreground/30 transition-all duration-300 z-30"
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 p-3  text-primary hover:bg-primary-foreground/30 transition-all duration-300 z-30"
         aria-label="Next slide"
       >
         <ChevronRight size={28} />
