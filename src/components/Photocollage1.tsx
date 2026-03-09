@@ -72,7 +72,7 @@ const Photocollage1 = () => {
   return (
    
        <div className="h-full p-16 md:p-8 ">
-<div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-4 gap-2 md:gap-1 h-full overflow-y-auto">
+<div className="grid grid-cols-2 md:grid-cols-6 lg:grid-cols-4 gap-2 md:gap-1 h-full overflow-y-auto">
         {images.map((src, index) => (
           <div key={index} className="relative overflow-hidden " style={{ paddingBottom: '100%' }}> 
             <img 
