@@ -25,7 +25,7 @@ const Index = () => {
         <SustainabilitySection />
         {/*<BlogSection />*/}
         <ContactSection />
-       {/* <PartnersPage/>*/}
+      <PartnersPage/>
       </main>
       <Footer />
     </div>
