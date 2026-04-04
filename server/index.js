@@ -42,11 +42,13 @@ app.post('/api/contact', async (req, res) => {
         pass: process.env.EMAIL_PASS,  // Your App Password
       },
     });
-    //${process.env.EMAIL_USER}team@overseasvoyages.com
+   // ${process.env.EMAIL_USER}team@overseasvoyages.com
+  
+
     //  Email to (business email)
     const mailToYou = await transporter.sendMail({
-      from: `"Overseas Voyages Contact Form" <team@overseasvoyages.com>`,
-      to: 'team@overseasvoyages.com', // WHERE YOU WANT TO RECEIVE EMAILS
+      from: `"Website Contact" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_USER,
       replyTo: email, // So you can reply directly to user
       subject: `New Contact: ${subject}`,
       html: `
@@ -83,10 +85,10 @@ Sent from Overseas Voyages contact form
       `,
     });
     
-    console.log('✅ Email to you sent:', mailToYou.messageId);
+   // console.log('✅ Email to you sent:', mailToYou.messageId);
     
     // Auto-reply to USER
-    const mailToUser = await transporter.sendMail({
+   const mailToUser = await transporter.sendMail({
       from: `"Overseas Voyages" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: 'Thank you for contacting Overseas Voyages',
@@ -124,13 +126,14 @@ The Overseas Voyages Team
       `,
     });
     
-    console.log('✅ Confirmation email sent to user');
+    console.log('✅ Confirmation email sent to user'); 
+
     // ========== END EMAIL CODE ==========
     
     // Success response
     res.json({ 
       success: true, 
-      message: 'Email sent successfully! You will receive a confirmation shortly.'
+      message: 'Email sent successfully!.'// You will receive a confirmation shortly
     });
     
   } catch (error) {
