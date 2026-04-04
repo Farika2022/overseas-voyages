@@ -44,9 +44,9 @@ import pic41 from "../assets/team/41.jpeg"
 
 const Photocollage2 = () => {
   const images = [
-  pic24,
+  
   pic25, 
-   // pic26,
+   pic26,
     pic27,
     pic28,
     pic29,

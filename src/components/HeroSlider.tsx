@@ -14,15 +14,16 @@ interface Slide {
 }
 
 const slides: Slide[] = [
+ {
+    image: passportStamps,
+    taglineEn: "World's Leading Hub for Time Tested Partners",
+    subtext: "Overseas Voyages connects you with the world's most trusted and proven partners, carefully sourced from leading international markets and global trade fairs.",
+  },
   {
     image: heroLandscape,
     taglineEn: 'We Travel Everywhere to Help You Travel Anywhere',
   },
-  {
-    image: passportStamps,
-    taglineEn: "World's Leading Hub for Time Tested Suppliers",
-    subtext: 'We source and connect with trusted tour operators across the globe .',
-  },
+  
   {
     customComponent: <Photocollage1 />,
   },

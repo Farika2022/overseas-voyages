@@ -109,15 +109,15 @@ const handleSubmit = async (e: React.FormEvent) => {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
+                {/* <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-primary-foreground/20 flex items-center justify-center flex-shrink-0">
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-1">Phone</h4>
+                   <h4 className="font-semibold mb-1">Phone</h4>
                     <p className="opacity-90">+1 (416) 230-3217</p>
                   </div>
-                </div>
+                </div>*/}
 
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-primary-foreground/20 flex items-center justify-center flex-shrink-0">
