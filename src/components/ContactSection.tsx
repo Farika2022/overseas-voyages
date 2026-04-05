@@ -13,7 +13,11 @@ const ContactSection = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
+ 
+  console.log('Service ID:', import.meta.env.VITE_EMAILJS_SERVICE_ID);
+  console.log('Template ID:', import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
+  console.log('Public Key:', import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+ 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
