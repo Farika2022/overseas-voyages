@@ -49,7 +49,7 @@ const Photocollage1 = () => {
     pic3,
     pic4,
     pic5,
-    pic6,
+   // pic6,
     pic7,
    //pic9, 
    //pic10, 
@@ -67,28 +67,17 @@ const Photocollage1 = () => {
   ];
 
   return (
-   
-       <div className="h-full p-10 md:p-8 ">
-<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 h-full overflow-y-auto">
-        {images.map((src, index) => (
-          <div key={index} className="relative overflow-hidden " style={{ paddingBottom: '100%' }}> 
-            <img 
-              src={src} 
-              loading="lazy"
-              alt={`Travel photo ${index + 1}`}
-              className="absolute inset-0 w-full h-full  "
-              onError={(e) => {
-                console.error(`Failed to load image: ${src}`);
-                e.currentTarget.style.display = 'none';
-                e.currentTarget.parentElement!.innerHTML = `
-                  <div class="w-full h-full min-h-[150px] md:min-h-[180px] bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold rounded-lg">
-                    Image ${index + 1}
-                  </div>
-                `;
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-red/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </div>
+ <div className="h-full overflow-y-auto p-2">
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-1">
+      {images.map((src, index) => (
+        <div key={index} className="w-full overflow-hidden">
+          <img
+            src={src}
+            alt={`Photo ${index + 1}`}
+            loading="lazy"
+            className="w-full h-auto block"
+          />
+        </div>
         ))}
       </div>
     </div>

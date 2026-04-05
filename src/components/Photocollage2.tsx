@@ -45,7 +45,7 @@ import pic41 from "../assets/team/41.webp"
 const Photocollage2 = () => {
   const images = [
   
-  pic25, 
+  //pic25, 
    pic26,
     pic27,
     pic28,
@@ -61,31 +61,23 @@ const Photocollage2 = () => {
     pic39,
     pic40,
     pic41,
+    pic6,
     // Add more imported images here
   ];
 
   return (
    
-       <div className="h-full p-16 md:p-8 ">
-<div className="grid grid-cols-2 md:grid-cols-6 lg:grid-cols-4 gap-2 md:gap-1 h-full overflow-y-auto">
-        {images.map((src, index) => (
-          <div key={index} className="relative overflow-hidden " style={{ paddingBottom: '100%' }}> 
-            <img 
-              src={src} 
-              alt={`Travel photo ${index + 1}`}
-              className="absolute inset-0 w-full h-full  "
-              onError={(e) => {
-                console.error(`Failed to load image: ${src}`);
-                e.currentTarget.style.display = 'none';
-                e.currentTarget.parentElement!.innerHTML = `
-                  <div class="w-full h-full min-h-[150px] md:min-h-[180px] bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold rounded-lg">
-                    Image ${index + 1}
-                  </div>
-                `;
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-red/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </div>
+      <div className="h-full overflow-y-auto p-2">
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-1">
+      {images.map((src, index) => (
+        <div key={index} className="w-full overflow-hidden">
+          <img
+            src={src}
+            alt={`Photo ${index + 1}`}
+            loading="lazy"
+            className="w-full h-auto block"
+          />
+        </div>
         ))}
       </div>
     </div>
