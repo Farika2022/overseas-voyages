@@ -60,8 +60,8 @@ const Photocollage1 = () => {
    // pic16, // not working
     pic19,
     pic22,
-   pic23,
-  pic24,
+  // pic23,
+   pic24,
    
     // Add more imported images here
   ];
