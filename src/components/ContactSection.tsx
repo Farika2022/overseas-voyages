@@ -27,18 +27,6 @@ const ContactSection = () => {
         { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
       );
 
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID,
-        {
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message.substring(0, 150) + (formData.message.length > 150 ? '...' : ''),
-        },
-        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
-      );
-
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setSubmitStatus('idle'), 5000);
@@ -102,7 +90,7 @@ const ContactSection = () => {
                     <p className="opacity-90">+1 (416) 230-3217</p>
                   </div>
                 </div>*/}
-                
+
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-primary-foreground/20 flex items-center justify-center flex-shrink-0">
                     <Mail className="w-6 h-6" />
