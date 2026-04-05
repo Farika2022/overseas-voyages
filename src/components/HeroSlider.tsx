@@ -160,7 +160,7 @@ const HeroSlider = () => {
             )}
             
             {/* Custom Component - Render if exists */}
-            {hasCustomComponent && slide.customComponent}
+            {hasCustomComponent && isCurrent && slide.customComponent}
             
             {/* Content Container */}
             <div className="hero-content relative h-full flex flex-col justify-center items-center text-primary-foreground p-4 md:p-8">
