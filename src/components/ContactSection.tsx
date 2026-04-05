@@ -1,7 +1,10 @@
-import { useState } from 'react';
-import { MapPin, Phone, Mail, Send, Facebook, Instagram, Linkedin } from 'lucide-react';
+
+import { useState, useRef } from 'react';
+import { MapPin, Mail, Send, Facebook, Instagram, Linkedin } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
+  const form = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,69 +14,51 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  console.log('🔄 Submitting form...');
-  
-  setIsSubmitting(true);
-  setSubmitStatus('idle');
-  
-  try {
-    // Use server URL
-    const response = await fetch('http://localhost:3001/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-    
-    const result = await response.json();
-    console.log('Server response:', result);
-    
-    if (response.ok && result.success) {
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        form.current,
+        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
+      );
+
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message.substring(0, 150) + (formData.message.length > 150 ? '...' : ''),
+        },
+        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
+      );
+
       setSubmitStatus('success');
-      // Clear form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-      });
-      // Auto-hide success message after 5 seconds
+      setFormData({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setSubmitStatus('idle'), 5000);
-    } else {
+
+    } catch (error) {
+      console.error('❌ EMAIL ERROR:', error);
       setSubmitStatus('error');
-      console.error('Server error:', result.message);
+    } finally {
+      setIsSubmitting(false);
     }
-  } catch (error) {
-    console.error('Network error:', error);
-    setSubmitStatus('error');
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const socialLinks = [
-    { 
-      Icon: Facebook, 
-      href: "https://www.facebook.com/overseasvoyagesfans",
-      label: "Facebook"
-    },
-    { 
-      Icon: Instagram, 
-      href: "https://www.instagram.com/overseasvoyages/",
-      label: "Instagram"
-    },
-    { 
-      Icon: Linkedin, 
-      href: "https://www.linkedin.com/company/overseas-voyages/",
-      label: "LinkedIn"
-    }
+    { Icon: Facebook, href: "https://www.facebook.com/overseasvoyagesfans", label: "Facebook" },
+    { Icon: Instagram, href: "https://www.instagram.com/overseasvoyages/", label: "Instagram" },
+    { Icon: Linkedin, href: "https://www.linkedin.com/company/overseas-voyages/", label: "LinkedIn" },
   ];
 
   return (
@@ -97,7 +82,6 @@ const handleSubmit = async (e: React.FormEvent) => {
           <div>
             <div className="bg-primary rounded-3xl p-8 md:p-10 text-primary-foreground mb-8">
               <h3 className="font-display text-2xl font-bold mb-8">Get in Touch</h3>
-              
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-primary-foreground/20 flex items-center justify-center flex-shrink-0">
@@ -105,11 +89,11 @@ const handleSubmit = async (e: React.FormEvent) => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Office Location</h4>
-                    <p className="opacity-90">World-wide</p>{/*We need to change the address */}
+                    <p className="opacity-90">World-wide</p>
                   </div>
                 </div>
 
-                {/* <div className="flex items-start gap-4">
+              {/* <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-primary-foreground/20 flex items-center justify-center flex-shrink-0">
                     <Phone className="w-6 h-6" />
                   </div>
@@ -118,7 +102,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                     <p className="opacity-90">+1 (416) 230-3217</p>
                   </div>
                 </div>*/}
-
+                
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-primary-foreground/20 flex items-center justify-center flex-shrink-0">
                     <Mail className="w-6 h-6" />
@@ -156,11 +140,11 @@ const handleSubmit = async (e: React.FormEvent) => {
               <p className="text-muted-foreground mb-4">
                 Are you a supplier or destination management company? Let's collaborate and grow together.
               </p>
-              <a 
-                href="mailto:partnerships@overseasvoyages.com" 
+              <a
+                href="mailto:partnerships@overseasvoyages.com"
                 className="text-primary font-semibold hover:underline"
               >
-               team@overseasvoyages.com
+                team@overseasvoyages.com
               </a>
             </div>
           </div>
@@ -168,21 +152,19 @@ const handleSubmit = async (e: React.FormEvent) => {
           {/* Contact Form */}
           <div className="bg-secondary rounded-3xl p-8 md:p-10">
             <h3 className="font-display text-2xl font-bold text-foreground mb-8">Send Us a Message</h3>
-            
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Status Messages */}
+
+            <form ref={form} onSubmit={handleSubmit} className="space-y-6">
               {submitStatus === 'success' && (
                 <div className="p-4 rounded-xl bg-green-50 text-green-800 border border-green-200">
-                  ✅ Thank you! Your message has been sent to team@overseasvoyages.com
+                  ✅ Thank you! Your message has been sent. You'll receive a confirmation email shortly.
                 </div>
               )}
-              
               {submitStatus === 'error' && (
                 <div className="p-4 rounded-xl bg-red-50 text-red-800 border border-red-200">
                   ❌ Sorry, there was an error. Please email us directly at team@overseasvoyages.com
                 </div>
               )}
-              
+
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                   Your Name
@@ -264,8 +246,8 @@ const handleSubmit = async (e: React.FormEvent) => {
                 {isSubmitting ? (
                   <>
                     <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                     </svg>
                     Sending...
                   </>
