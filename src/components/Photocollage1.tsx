@@ -40,6 +40,8 @@ import pic38 from "../assets/team/38.webp"
 import pic39 from "../assets/team/39.webp"
 import pic40 from "../assets/team/40.webp"
 import pic41 from "../assets/team/41.webp"
+import pic42 from "../assets/team/42.webp"
+import pic43 from "../assets/team/43.webp"
 // Import more images as needed
 
 const Photocollage1 = () => {
@@ -62,6 +64,8 @@ const Photocollage1 = () => {
     pic22,
   // pic23,
    pic24,
+   pic42,
+   pic43,
    
     // Add more imported images here
   ];
